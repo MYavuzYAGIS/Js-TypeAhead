@@ -69,6 +69,25 @@ and some regex magic for search query
 
 if state or city returns, this will be displayed on the hayda
 
-
-
 */
+
+
+function displayMatches(){
+    const matchArray = findMatched(this.value, cities);
+    const html = matchArray.map(place =>{
+        return `
+        <li>
+          <span class="name">${place.city},${place.state}</span>
+          <span class="population">${place.population}</span>
+        </li>`;
+    }).join('');
+        suggestions.innerHTML= html;
+}
+
+
+
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('keyup', displayMatches)
