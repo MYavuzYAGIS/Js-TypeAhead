@@ -18,6 +18,15 @@ the user start typing a city or a state, javascript engine fetches the informati
 > - Fetch API
 
 
-![parsing]()
+## Before
+
+![parsing](img/before.png)
+
+
+
+## After Querying
+
+![](img/after.png)
+
 
 You can find the content @ https://javascript30.com/
