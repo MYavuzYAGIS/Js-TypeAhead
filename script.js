@@ -72,13 +72,25 @@ if state or city returns, this will be displayed on the hayda
 */
 
 
+// another regex to put commas to numbers
+
+function numberWithCommas(x){
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+
+
+
 function displayMatches(){
     const matchArray = findMatched(this.value, cities);
     const html = matchArray.map(place =>{
+        const regex = new RegExp(this.value, 'gi');
+        const cityName = place.city.replace(regex, `<span class ="h1">${this.value}</span>`);
+        const stateName = place.city.replace(regex, `<span class ="h1">${this.value}</span>`);
         return `
         <li>
-          <span class="name">${place.city},${place.state}</span>
-          <span class="population">${place.population}</span>
+          <span class="name">${cityName},${stateName}</span>
+          <span class="population">${numberWithCommas(place.population)}</span>
         </li>`;
     }).join('');
         suggestions.innerHTML= html;
